@@ -14,6 +14,7 @@ class Pharmacy(models.Model):
     name = models.CharField(max_length=150)
     address = models.CharField(max_length=200)
     phoneNumber = models.CharField(max_length=12)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -41,8 +42,6 @@ class Medication(models.Model):
         next_dose_timestamp = last_dose.timestamp + timedelta(hours=self.frequency)
         current_time = timezone.localtime(timezone.now())
         time_until_next_dose = next_dose_timestamp - current_time
-        print(f'This is time_until_next_dose: {time_until_next_dose}')
-        print(f'This is time_until_next_dose total seconds: {time_until_next_dose.total_seconds()}')
         if time_until_next_dose.total_seconds() > 1850:
             return True, round(time_until_next_dose.total_seconds()/3600, 1)
         else: 

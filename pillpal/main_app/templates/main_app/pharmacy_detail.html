@@ -12,8 +12,10 @@
         <p>Phone Number: {{ pharmacy.phoneNumber }}</p>
       </div>
       <div class="card-action">
-        <a href="{% url 'pharmacies_update' pharmacy.id %}" class="teal-text text-darken-1">Edit</a>
-        <a href="{% url 'pharmacies_delete' pharmacy.id %}" class="red-text text-darken-1">Delete</a>
+        {% if user.is_authenticated and user.id == pharmacy.user.id %}
+          <a href="{% url 'pharmacies_update' pharmacy.id %}" class="teal-text text-darken-1">Edit</a>
+          <a href="{% url 'pharmacies_delete' pharmacy.id %}" class="red-text text-darken-1">Delete</a>
+        {% endif %}
       </div>
     </div>
   </div>
