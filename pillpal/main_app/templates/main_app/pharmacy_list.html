@@ -1,15 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<style>
+  .card {
+    animation: slide-up 1s ease-in-out forwards;
+    opacity: 0;
+  }
+  @keyframes slide-up {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
 <h1 class="teal-text text-darken-2">Pharmacy List</h1>
-
 {% for pharmacy in pharmacy_list %}
   <a href="{% url 'pharmacies_detail' pharmacy.id %}">
     <div class="card hoverable">
         <div class="card-content black-text">
             <span class="card-title teal-text text-darken-1">{{ pharmacy.name }}</span>
             <p>Address: {{ pharmacy.address }}</p>
-            <p>Phone  Number: {{ pharmacy.phoneNumber }}</p>
+            <p>Phone Number: {{ pharmacy.phoneNumber }}</p>
         </div>
     </div>
   </a>

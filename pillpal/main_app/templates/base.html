@@ -24,6 +24,9 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
       }
+      .navbar1{
+        margin-right: 30px;
+      }
     </style>
     <header class="navbar-fixed">
         <nav>
@@ -32,7 +35,7 @@
                     <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;PillPal <img class="centered-image"src="https://i.imgur.com/4UNNfuS.png" /></a></li>
                     
                 </ul>
-                <ul class="right">
+                <ul class="right navbar1">
                     <li><a href="{% url 'about' %}">About</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'pharmacies_create' %}">Add a Pharmacy</a></li>
@@ -40,6 +43,7 @@
                     <li><a href="{% url 'medications_create' %}">Add Medication</a></li>
                     <li><a href="{% url 'index' %}">View All My Medications</a></li>
                     <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    <li><div>{{ user.username }}</div></li>
                     {% else %}
                     <li><a href="{% url 'login' %}">Log In</a></li>
                     <li><a href="{% url 'signup' %}">Sign Up</a></li>

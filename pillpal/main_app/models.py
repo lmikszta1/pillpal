@@ -12,8 +12,8 @@ from django.contrib.auth.models import User
 
 class Pharmacy(models.Model):
     name = models.CharField(max_length=150)
-    address = models.CharField(max_length=200)
-    phoneNumber = models.CharField(max_length=12)
+    address = models.CharField(max_length=200, help_text='Please include City and State')
+    phoneNumber = models.CharField(max_length=15)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
