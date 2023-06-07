@@ -1,6 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<style>
+  .card {
+    animation: slide-up 1s ease-in-out forwards;
+    opacity: 0;
+  }
+  @keyframes slide-up {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
 <h1 class="teal-text text-darken-2">Medication List</h1>
 
 {% for medication in medications %}
