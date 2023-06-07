@@ -31,7 +31,7 @@ class Medication(models.Model):
     pharmacies = models.ManyToManyField(Pharmacy)
 
     def __str__(self):
-        return f'{self.name}({self.id})'
+        return f'{self.name}'
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'medication_id': self.id})
@@ -55,6 +55,8 @@ class MedicationIntake(models.Model):
     def __str__(self):
         return f"A dose of {self.medication} was taken at {self.timestamp}"
     
+    class Meta:
+        ordering = ['-timestamp']
 
 
 
