@@ -11,9 +11,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
 import environ
 import os
-import dj_database_url
 
 env = environ.Env(
     # set casting, default value
@@ -85,17 +85,24 @@ WSGI_APPLICATION = 'pillpal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'pillpal',
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'pillpal',
-    }
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'neondb',
+    'USER': 'lmikszta',
+    'PASSWORD': '1sJKSbGZD8oP',
+    'HOST': 'ep-solitary-recipe-872108.us-east-1.aws.neon.tech',
+    'PORT': '5432',
+  }
 }
-DATABASES = {
-    'default': dj_database_url.config(     
-    default='postgresql://postgres:postgres@localhost:5432/<name_of_database>',        
-    conn_max_age=600    )
-    }
+
+# psql 'postgresql://lmikszta:1sJKSbGZD8oP@ep-solitary-recipe-872108.us-east-1.aws.neon.tech/neondb'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -133,6 +140,14 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+if not DEBUG:
+    # Tell Django to copy statics to the `staticfiles` directory
+    # in your application directory on Render.
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+    # Turn on WhiteNoise storage backend that takes care of compressing static files
+    # and creating unique names for each version so they can safely be cached forever.
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # Default primary key field type
@@ -144,13 +159,5 @@ LOGIN_REDIRECT_URL = '/medications/'
 
 LOGOUT_REDIRECT_URL = '/'
 
-if not DEBUG:
-    # Tell Django to copy statics to the `staticfiles` directory
-    # in your application directory on Render.
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-    # Turn on WhiteNoise storage backend that takes care of compressing static files
-    # and creating unique names for each version so they can safely be cached forever.
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
