@@ -74,6 +74,10 @@ class MedicationDelete(LoginRequiredMixin, DeleteView):
 class PharmacyList(LoginRequiredMixin, ListView):
     model = Pharmacy
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.order_by('name')
+
 class PharmacyDetail(LoginRequiredMixin, DetailView):
     model = Pharmacy
 
