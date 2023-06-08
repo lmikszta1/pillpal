@@ -21,7 +21,7 @@ def about(request):
 
 @login_required
 def medications_index(request):
-    medications = Medication.objects.filter(user=request.user).order_by('medicationintake')
+    medications = Medication.objects.filter(user=request.user)
     return render(request, 'medications/index.html', {'medications': medications})
 
 @login_required
