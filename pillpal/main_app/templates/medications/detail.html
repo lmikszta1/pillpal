@@ -38,13 +38,13 @@
         <div class="card-panel red-text center-align">
             You missed your dose! It happens, try to take it as soon as you can.
         </div>
-    {% endif %}
         <form action="{% url 'add_medicationintake' medication.id %}" method="POST">
             {% csrf_token %}
             <!-- Render the inputs -->
             {{ medicationintake_form.as_p }}
             <input type="submit" class="btn" value="I took my medication" />
         </form>
+    {% endif %}
         <div class="table-wrapper">
             <table>
                 <thead>
