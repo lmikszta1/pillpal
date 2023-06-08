@@ -2,18 +2,25 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>PillPal</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <style>
-    .centered-image {
+      .centered-image {
         display: inline-block;
         /* Add animation property */
         animation: spin 3s linear infinite;
@@ -21,43 +28,52 @@
       }
       /* Define the animation */
       @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
       }
-      .navbar1{
+      .navbar1 {
         margin-right: 30px;
       }
     </style>
     <header class="navbar-fixed">
-        <nav>
-            <div class="nav-wrapper teal lighten-1">
-                <ul>
-                    <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;PillPal <img class="centered-image"src="https://i.imgur.com/4UNNfuS.png" /></a></li>
-                    
-                </ul>
-                <ul class="right navbar1">
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    {% if user.is_authenticated %}
-                    <li><a href="{% url 'pharmacies_create' %}">Add a Pharmacy</a></li>
-                    <li><a href="{% url 'pharmacies_index' %}">View All Pharmacies</a></li>
-                    <li><a href="{% url 'medications_create' %}">Add Medication</a></li>
-                    <li><a href="{% url 'index' %}">View All My Medications</a></li>
-                    <li><a href="{% url 'logout' %}">Log Out</a></li>
-                    <li><div>{{ user.username }}</div></li>
-                    {% else %}
-                    <li><a href="{% url 'login' %}">Log In</a></li>
-                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                {% endif %}
-                </ul>
-            </div>
-        </nav>
+      <nav>
+        <div class="nav-wrapper teal lighten-1">
+          <ul>
+            <li>
+              <a href="{% url 'home' %}" class="left brand-logo"
+                >&nbsp;&nbsp;PillPal
+                <img
+                  class="centered-image"
+                  src="https://i.imgur.com/4UNNfuS.png"
+              /></a>
+            </li>
+          </ul>
+          <ul class="right navbar1">
+            <li><a href="{% url 'about' %}">About</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'pharmacies_create' %}">Add a Pharmacy</a></li>
+            <li>
+              <a href="{% url 'pharmacies_index' %}">View All Pharmacies</a>
+            </li>
+            <li><a href="{% url 'medications_create' %}">Add Medication</a></li>
+            <li><a href="{% url 'index' %}">View All My Medications</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+            <li><div>{{ user.username }}</div></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Log In</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
     </header>
-    <main class="container">
-        {% block content %}
-        {% endblock %}
-    </main>
-  	<footer class="page-footer teal lighten-1">
-       <div class="right">All Rights Reserved, &copy; 2023 PillPal &nbsp;</div>
+    <main class="container">{% block content %} {% endblock %}</main>
+    <footer class="page-footer teal lighten-1">
+      <div class="right">All Rights Reserved, &copy; 2023 PillPal &nbsp;</div>
     </footer>
-</body>
+  </body>
 </html>

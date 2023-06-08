@@ -1,5 +1,4 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <style>
   .card {
     animation: slide-up 1s ease-in-out forwards;
@@ -20,20 +19,25 @@
 
 {% for medication in medications %}
 <a href="{% url 'detail' medication.id %}">
-    <div class="card hoverable">
-      <div class="card-content black-text">
-        <span class="card-title teal-text text-darken-1">{{ medication.name }}</span>        
-        <p>Warnings: {{ medication.warnings|linebreaks }}</p>
-        {% if medication.dose_taken %}
+  <div class="card hoverable">
+    <div class="card-content black-text">
+      <span class="card-title teal-text text-darken-1"
+        >{{ medication.name }}</span
+      >
+      <p>Warnings: {{ medication.warnings|linebreaks }}</p>
+      {% if medication.dose_taken %}
 
-        <div class="card-panel teal-text center-align">All caught up for now. Next dose is in {{ medication.dose_taken.1}} hours.</div>
-
-        {% else %}
-            <div class="card-panel red-text center-align">You missed your dose! It happens, try to take it as soon as you can.</div>
-        {% endif %}
+      <div class="card-panel teal-text center-align">
+        All caught up for now. Next dose is in {{ medication.dose_taken.1}}
+        hours.
       </div>
-    </div>
-  </a>
-{% endfor %}
 
-{% endblock %}
+      {% else %}
+      <div class="card-panel red-text center-align">
+        You missed your dose! It happens, try to take it as soon as you can.
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</a>
+{% endfor %} {% endblock %}
