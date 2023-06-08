@@ -37,7 +37,6 @@ class Medication(models.Model):
         return reverse('detail', kwargs={'medication_id': self.id})
     
     def dose_taken(self):
-        # return self.medicationintake_set.filter(timestamp__lte=now()).count() 
         last_dose = self.medicationintake_set.latest('timestamp')
         next_dose_timestamp = last_dose.timestamp + timedelta(hours=self.frequency)
         current_time = timezone.localtime(timezone.now())
@@ -51,13 +50,9 @@ class MedicationIntake(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     medication = models.ForeignKey(Medication, on_delete=models.CASCADE)
 
-
     def __str__(self):
         return f"A dose of {self.medication} was taken at {self.timestamp}"
     
     class Meta:
         ordering = ['-timestamp']
-
-
-
-    
+ 
