@@ -1,9 +1,7 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <style>
-    .fade-in {
+  .fade-in {
     animation: fade-in 2s ease-in-out forwards;
     opacity: 0;
   }
@@ -17,34 +15,44 @@
     }
   }
 
+  .centered-image {
+    display: inline-block;
+    width: 8%;
+    /* Add animation property */
+    animation: spin 3s linear infinite;
+  }
 
-        .centered-image {
-      display: inline-block;
-      width: 8%;
-      /* Add animation property */
-      animation: spin 3s linear infinite;
+  /* Define the animation */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
     }
-
-        /* Define the animation */
-        @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    100% {
+      transform: rotate(360deg);
     }
+  }
 </style>
 
-  <h1 class="fade-in teal-text text-darken-1">About PillPal <img class="centered-image"src="https://i.imgur.com/4UNNfuS.png" /> </h1>
-  <hr />
+<h1 class="fade-in teal-text text-darken-1">
+  About PillPal
+  <img class="centered-image" src="https://i.imgur.com/4UNNfuS.png" />
+</h1>
+<hr />
 
-  <p class="flow-text fade-in">
-    
-PillPal is a convenient and user-friendly app designed to help you stay on top of your medications and improve your medication adherence. With PillPal, you can easily track your medications, receive timely reminders for dosage schedules, and access contact information for your preferred pharmacy to call and check stock or request refills.
-Managing multiple medications can be challenging, but PillPal simplifies the process. Whether you're juggling prescriptions for chronic conditions, maintaining a daily vitamin regimen, or simply need a reminder for occasional medications, PillPal has got you covered.
-<br >
+<p class="flow-text fade-in">
+  PillPal is a convenient and user-friendly app designed to help you stay on top
+  of your medications and improve your medication adherence. With PillPal, you
+  can easily track your medications, receive timely reminders for dosage
+  schedules, and access contact information for your preferred pharmacy to call
+  and check stock or request refills. Managing multiple medications can be
+  challenging, but PillPal simplifies the process. Whether you're juggling
+  prescriptions for chronic conditions, maintaining a daily vitamin regimen, or
+  simply need a reminder for occasional medications, PillPal has got you
+  covered.
+  <br />
 
-Create an account with PillPal today and experience the convenience and peace of mind that comes with effortless medication management!
-  </p>
-
-  
-
+  Create an account with PillPal today and experience the convenience and peace
+  of mind that comes with effortless medication management!
+</p>
 
 {% endblock %}

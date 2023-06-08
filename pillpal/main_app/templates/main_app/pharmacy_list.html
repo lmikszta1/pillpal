@@ -1,5 +1,4 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <style>
   .card {
     animation: slide-up 1s ease-in-out forwards;
@@ -18,15 +17,15 @@
 </style>
 <h1 class="teal-text text-darken-2">Pharmacy List</h1>
 {% for pharmacy in pharmacy_list %}
-  <a href="{% url 'pharmacies_detail' pharmacy.id %}">
-    <div class="card hoverable">
-        <div class="card-content black-text">
-            <span class="card-title teal-text text-darken-1">{{ pharmacy.name }}</span>
-            <p>Address: {{ pharmacy.address }}</p>
-            <p>Phone Number: {{ pharmacy.phoneNumber }}</p>
-        </div>
+<a href="{% url 'pharmacies_detail' pharmacy.id %}">
+  <div class="card hoverable">
+    <div class="card-content black-text">
+      <span class="card-title teal-text text-darken-1"
+        >{{ pharmacy.name }}</span
+      >
+      <p>Address: {{ pharmacy.address }}</p>
+      <p>Phone Number: {{ pharmacy.phoneNumber }}</p>
     </div>
-  </a>
-{% endfor %}
-
-{% endblock %}
+  </div>
+</a>
+{% endfor %} {% endblock %}
